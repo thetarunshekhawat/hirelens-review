@@ -28,6 +28,7 @@ const exclude = [
   "next-env.d.ts",
   "*.DS_Store",
   "CLAUDE.md",
+  ".claude/*",
   "AGENTS.md",
 ];
 const args = ["-r", "-q", out, ".", "-x", ...exclude];
