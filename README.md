@@ -84,11 +84,11 @@ Law 144 are used only as reference standards.
 
 | Layer | In this project |
 |---|---|
-| Quality controls | 132 automated tests pin every rule, number and outcome. A test log, and a named human sign-off on the decision sheet. |
+| Quality controls | 137 automated tests pin every rule, number and outcome. A test log, and a named human sign-off on the decision sheet. |
 | Reliable execution | Scores, outcomes, selection rates and the recommendation come from fixed rules in `lib/review/`. The agent calls them and never invents them. |
 | Enterprise context | The case file, the vendor's documents, and an approved evidence library (`lib/library/`) led by Indian law. |
 | Domain method | Six questions, outcome rules R1–R7, decision rules D1–D3, and explicit hand-off points. |
-| General model capability | A Claude model plans the review, reads the evidence, explains it and drafts the memo. |
+| General model capability | A large language model plans the review, reads the evidence, explains it and drafts the memo: either the user's own ChatGPT account (through OpenAI Codex) or Claude (through the Anthropic API). |
 
 ### The agent's tools
 
@@ -126,16 +126,41 @@ Law 144 are used only as reference standards.
 - The agent's explanations can be wrong. Its numbers come from the tools, and
   its claims cite sources that can be checked.
 
-## Running locally
+## Running it
+
+**On your own computer, using your ChatGPT account** (recommended):
 
 ```bash
-cp env.template .env.local   # add ANTHROPIC_API_KEY
-npm install
-npm run build && npm start   # http://localhost:3000
-npm test                     # 132 tests
+npm run hirelens
 ```
 
-Every screen works without a key. Only the agent's live runs and answers need one.
+This one command installs everything, asks you to sign in with ChatGPT through
+OpenAI's official Codex tool (Plus, Pro, Business, Edu or Enterprise plans),
+builds the app and opens it. The agent then runs on your account while you use
+it. HireLens Review never reads or stores your sign-in. See
+[START-HERE.md](START-HERE.md) for step-by-step instructions.
+
+**With an API key instead:** put `ANTHROPIC_API_KEY=...` in `.env.local` and run
+the same command.
+
+**Hosted site:** https://hirelens-review.vercel.app has every review screen and
+a recorded run of the agent you can replay. A personal ChatGPT sign-in is never
+used on a public server, so live runs there need an API key.
+
+### How the ChatGPT sign-in works
+
+The agent's tools are exposed as an MCP server (`mcp/server.ts`) and driven by
+OpenAI's Codex SDK (`lib/ai/codex-agent.ts`) in a read-only, offline sandbox. It
+is the same tool code the API-key mode uses, so outcomes and numbers are
+identical either way.
+
+### Other commands
+
+```bash
+npm test             # 137 tests
+npm run record-run   # record a fresh agent run into data/recorded-run.json
+npm run package      # build dist/HireLens-Review.zip for submission
+```
 
 ## Licence
 

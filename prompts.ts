@@ -85,7 +85,9 @@ export const STYLE_PROMPT = `
 export const CITATIONS_PROMPT = `
 CITATIONS
 - Cite library sources inline as numbered markdown links, [[1]](url), placed
-  right after the claim, using ONLY the exact url returned by the library tools.
+  right after the claim and BEFORE the sentence's full stop, like this:
+  "The exemption covers only self-published data [[1]](url)." Use ONLY the
+  exact url returned by the library tools.
 - Number sources in order of first use; reuse the same number for the same source.
 - Every sentence must read completely with citations removed.
 - Do not write a References section; the interface lists sources automatically.
