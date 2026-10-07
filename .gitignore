@@ -21,3 +21,4 @@ coverage/
 .gstack/
 AGENTS.md
 CLAUDE.md
+.vercel

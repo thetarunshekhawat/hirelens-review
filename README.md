@@ -10,7 +10,7 @@ person must take over.
 
 | | |
 |---|---|
-| **Live site** | _added after deployment_ |
+| **Live site** | https://hirelens-review.vercel.app |
 | **Team** | Tarun Shekhawat · Mansi Jain · Khushi Garg · Nilanjana · Shourya Bardia · Vinamra Pattapu |
 | **Problem area** | Information appropriateness and consent |
 | **Decision supported** | Whether a company should adopt a social-media screening tool for campus hiring, and on what conditions |
