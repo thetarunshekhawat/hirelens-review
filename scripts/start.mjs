@@ -91,6 +91,7 @@ const server = spawn(isWin ? "npx.cmd" : "npx", ["next", "start", "-p", String(p
 });
 
 setTimeout(() => {
+  if (process.env.HIRELENS_NO_OPEN) return;
   const opener = process.platform === "darwin" ? "open" : isWin ? "start" : "xdg-open";
   spawn(opener, [url], { stdio: "ignore", shell: isWin, detached: true }).on("error", () => {});
   console.log(`\n  Open ${url} if your browser did not open. Press Ctrl+C here to stop.\n`);
