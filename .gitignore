@@ -1,0 +1,23 @@
+# secrets
+.env
+.env.*
+!env.template
+
+# dependencies and build output
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# local
+.DS_Store
+*.log
+scratch/
+coverage/
+
+# local tooling
+.gstack/
+AGENTS.md
+CLAUDE.md
